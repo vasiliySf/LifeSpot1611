@@ -3,13 +3,46 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <link href="../../Static/CSS/index.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../../Static/JS/about.js"></script>
 </head>
 <body>
     <p>===> Слайдер <===</p>
     <div class="imgs">
-        <p>  <img src="london.jpg" alt=" Лондон"> </p>
+        <p> <img src="london.jpg" class="block" alt=" Лондон"> </p>
         <p> <img src="ny.jpg" alt=" Нью-Йорк"></p>
         <p> <img src="spb.jpg" alt=" Санкт Петербург"></p>
-    </div>
+    </div>    
+    <button class="btnRight" id="btnRight" name="btnRight">Right</button>
+    <script>
+        
+            let btnRight = document.querySelector(".btnRight");
+            // Берём слайды
+            let imegs = document.querySelectorAll("img");
+            // Объявляем переменную i 
+            let i = 0;
+
+            // Объявляем событие нажатия на кнопку вперёд
+            btnRight.addEventListener("click", function () {
+                // Увеличиваем переменную i
+                ++i
+                console.log(i);
+                // Условие если переменная i больше или равна количеству слайдов
+                if (i >= imegs.length) {
+                    // Удаляем класс block предыдущему слайду
+                    imegs[i - 1].classList.remove("block");
+                    // Присваиваем переменной i ноль
+                    i = 0;
+                    // Добавляем класс block следующему слайду
+                    imegs[i].classList.add("block");
+                } else { // Иначе
+                    // Удаляем класс block предыдущему слайду
+                    imegs[i - 1].classList.remove("block");
+                    // Добавляем класс block следующему слайду
+                    imegs[i].classList.add("block");
+                }
+            })
+       
+    </script>
 </body>
 </html>
